@@ -130,7 +130,7 @@ public class Controller implements Initializable {
         try {
             out.writeUTF(String.format("/auth %s %s", loginField.getText().trim().toLowerCase(),
                     passwordField.getText().trim()));
-            passwordField.clear();
+                    passwordField.clear();
 
         } catch (IOException e) {
             e.printStackTrace();
