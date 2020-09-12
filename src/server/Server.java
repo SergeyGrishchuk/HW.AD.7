@@ -51,6 +51,20 @@ public class Server {
         }
     }
 
+    public void personalMsg(ClientHandler sender, String recipient, String msg){
+        String message = String.format("[%s] private [%s] : %s", sender.getNickname(), recipient, msg);
+        for (ClientHandler c : clients) {
+            if(c.getNickname().equals(recipient)) {
+                c.sendMsg(message);
+                if(!c.equals(sender)){
+                    sender.sendMsg(message);
+                }
+                return;
+            }
+        }
+        sender.sendMsg("user " + recipient + " not found");
+    }
+
     public void subscribe(ClientHandler clientHandler){
         clients.add(clientHandler);
     }
